@@ -58,8 +58,10 @@ jobs:
         run: |
           cd openwrt
           sed -i "/helloworld/d" "feeds.conf.default"
-          sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-
+         #echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf.default"
+          echo "src-git kenzo https://github.com/kenzok8/openwrt-packages.git" >> "feeds.conf.default"
+          echo "src-git small https://github.com/kenzok8/small.git" >> "feeds.conf.default"
+          
       - name: Update & install feeds
         run: cd openwrt && ./scripts/feeds update -a && ./scripts/feeds install -a
 
